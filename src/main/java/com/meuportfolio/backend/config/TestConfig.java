@@ -8,8 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.meuportfolio.backend.entities.Category;
 import com.meuportfolio.backend.entities.Order;
 import com.meuportfolio.backend.entities.User;
+import com.meuportfolio.backend.entities.enums.OrderStatus;
+import com.meuportfolio.backend.repositories.CategoryRepository;
 import com.meuportfolio.backend.repositories.OrderRepository;
 import com.meuportfolio.backend.repositories.UserRepository;
 
@@ -22,19 +25,26 @@ public class TestConfig implements CommandLineRunner{
  
 	@Autowired
 	private OrderRepository orderRepository;
-
+	
+	@Autowired
+    private CategoryRepository categoryRepository;
   @Override
   public void run(String... args) throws Exception {
 		User u = new User(null, "Bart Allen","bart@boll.com","6549876","152345" );
 		User u1 = new User(null, "Ires West","ires@boll.com","3221656","12345" );
 		
 	    
-		Order o1 = new Order(null, Instant.parse("2026-02-12T15:29:36z"), u1);
-		Order o2 = new Order(null, Instant.parse("2026-02-22T15:25:36z"), u);
-		Order o3 = new Order(null, Instant.parse("2026-02-26T05:52:37z"), u);
+		Order o1 = new Order(null, Instant.parse("2026-02-12T15:29:36z"), OrderStatus.PAID, u1);
+		Order o2 = new Order(null, Instant.parse("2026-02-22T15:25:36z"), OrderStatus.DELIVERED, u);
+		Order o3 = new Order(null, Instant.parse("2026-02-26T05:52:37z"), OrderStatus.SHIPPED, u);
+		
+		Category c1 = new Category(null, "Electronics");
+		Category c2 = new Category(null, "Books");
+		Category c3 = new Category(null, "Cmputers");
 		
 		userRepository.saveAll(Arrays.asList(u,u1));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+		categoryRepository.saveAll(Arrays.asList(c1,c2,c3));
   }
   
 }
