@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.meuportfolio.backend.entities.Category;
 import com.meuportfolio.backend.entities.Order;
+import com.meuportfolio.backend.entities.OrderItem;
 import com.meuportfolio.backend.entities.Product;
 import com.meuportfolio.backend.entities.User;
 import com.meuportfolio.backend.entities.enums.OrderStatus;
 import com.meuportfolio.backend.repositories.CategoryRepository;
+import com.meuportfolio.backend.repositories.OrderItemRepository;
 import com.meuportfolio.backend.repositories.OrderRepository;
 import com.meuportfolio.backend.repositories.ProductRepository;
 import com.meuportfolio.backend.repositories.UserRepository;
@@ -27,6 +29,8 @@ public class TestConfig implements CommandLineRunner {
 
 	@Autowired
 	private OrderRepository orderRepository;
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -74,6 +78,12 @@ public class TestConfig implements CommandLineRunner {
 		Order o3 = new Order(null, Instant.parse("2026-02-26T05:52:37z"), OrderStatus.WAITING_PAYMENT, u2);
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+		OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 	}
 
 }
