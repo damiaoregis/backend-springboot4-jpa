@@ -1,4 +1,4 @@
-# 📌 Nome da API
+# 📌 Projeto Backend
 
 API RESTful desenvolvida em **Java com Spring Boot e Spring Data JPA. ** 
 A API: gerenciamento de clientes, catálogo de produtos com categorias, pedidos e pagamento  .
@@ -54,4 +54,10 @@ spring.jpa.properties.hibernate.format_sql=true
 | GET    | /users/{id} | Buscar usuário por ID    |
 | PUT    | /users/{id} | Atualizar usuário        |
 | DELETE | /users/{id} | Remover usuário          |
+
+
+👨‍💻 Autor
+- Nome: Damião Regis
+- LinkedIn: https://www.linkedin.com/in/dami%C3%A3o-regis-8877a1206/
+- GitHub: https://github.com/damiaoregis
 
