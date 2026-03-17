@@ -1,6 +1,7 @@
 # 📌 Nome da API
 
-API RESTful desenvolvida em **Java com Spring Boot e Spring Data JPA** A API: gerenciamento de clientes, catálogo de produtos com categorias, pedidos e pagamento  .
+API RESTful desenvolvida em **Java com Spring Boot e Spring Data JPA** 
+A API: gerenciamento de clientes, catálogo de produtos com categorias, pedidos e pagamento  .
 
 ---
 
